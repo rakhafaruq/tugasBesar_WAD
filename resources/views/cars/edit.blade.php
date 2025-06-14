@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Edit Mobil</h1>
-    <form action="{{ route('cars.update', $car->id) }}" method="POST">
+    <form action="{{ route('jual-mobil.update', $car->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -13,9 +13,16 @@
             <input type="text" class="form-control" name="merk" id="merk" value="{{ $car->merk }}" required>
         </div>
 
-        <div class="mb-3">
-            <label for="tipe" class="form-label">Tipe</label>
-            <input type="text" class="form-control" name="tipe" id="tipe" value="{{ $car->tipe }}" required>
+        <div class="form-group">
+                <label for="tipe_id">Tipe Mobil</label>
+                <select name="tipe_id" class="form-control" required>
+                    <option value="">Pilih Tipe Mobil</option>
+                    @foreach ($tipeMobil as $tipe)
+                        <option value="{{ $tipe->id }}" {{ $car->tipe_id == $tipe->id ? 'selected' : '' }}>
+                            {{ $tipe->name }}
+                        </option>
+                    @endforeach
+                </select>
         </div>
 
         <div class="mb-3">

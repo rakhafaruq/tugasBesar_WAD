@@ -9,10 +9,17 @@ class Car extends Model
 {
     use HasFactory;
     
+    protected $table = 'cars';
+
     protected $fillable = [
         'merk', 
-        'tipe', 
+        'tipe_id', 
         'tahun', 
-        'harga'
+        'harga',
     ];
+
+    public function tipe()
+    {
+        return $this->belongsTo(tipe::class, 'tipe_id');
+    }
 }

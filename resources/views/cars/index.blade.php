@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>Daftar Mobil</h1>
-    <a href="{{ route('cars.create') }}" class="btn btn-primary mb-3">Tambah Mobil Baru</a>
+    <a href="{{ route('jual-mobil.create') }}" class="btn btn-primary mb-3">Tambah Mobil Baru</a>
 
     <table class="table table-bordered">
         <thead>
@@ -20,12 +20,12 @@
             @foreach ($cars as $car)
             <tr>
                 <td>{{ $car->merk }}</td>
-                <td>{{ $car->tipe }}</td>
+                <td>{{ $car->tipe->name }}</td>
                 <td>{{ $car->tahun }}</td>
                 <td>{{ $car->harga }}</td>
                 <td>
-                    <a href="{{ route('cars.edit', $car->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('cars.destroy', $car->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('jual-mobil.edit', $car->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('jual-mobil.destroy', $car->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

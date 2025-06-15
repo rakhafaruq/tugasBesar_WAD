@@ -25,13 +25,18 @@ class CarController extends Controller
     public function dashboardData()
     {
         // Mengambil data jumlah mobil per tipe untuk grafik
-        $mobilByTipe = Car::select('tipe_id', \DB::raw('count(*) as total'))->groupBy('tipe_id')->get();
+        $cars = Car::all();
+        $mobilByTipe = Car::select('tipe_id', \DB::raw('count(*) as total'))
+                            ->groupBy('tipe_id')
+                            ->get();
 
         // Mengambil semua tipe mobil untuk grafik
-        $tipeMobil = Tipe::all();
+        $tipeMobil = tipe::all();
+        
 
         // Mengirim data ke view dashboard
-        return view('dashboard', compact('mobilByTipe', 'tipeMobil'));
+
+        return view('dashboard', compact('cars','mobilByTipe', 'tipeMobil'));
     }
 
     public function create()

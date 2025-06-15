@@ -54,7 +54,11 @@
                                 <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
                                 <small class="form-text text-muted">Pilih foto PNG atau JPG dengan ukuran maksimal 2MB.</small>
                             </div> -->
-
+                            <div class="mb-3">
+                                <label for="gambar" class="form-label">Foto Mobil</label>
+                                <input type="file" class="form-control" name="gambar" id="gambar" accept="image/*">
+                                <small class="form-text text-muted">Pilih foto PNG atau JPG dengan ukuran maksimal 2MB.</small>
+                            </div>
                             <button type="submit" class="btn btn-primary w-100">
                                 <i class="bi bi-plus-circle"></i> Tambah Mobil
                             </button>

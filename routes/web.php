@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CarController;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::get('/', [CarController::class, 'dashboardData'])->name('dashboard');
 
 // Route untuk Jual Mobil
 Route::prefix('jual-mobil')->name('jual-mobil.')->group(function () {

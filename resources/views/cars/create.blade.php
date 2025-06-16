@@ -3,11 +3,11 @@
 @section('title', 'Jual Mobil')
 
 @section('content')
-    <div class="container mt-4">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card shadow-sm">
-                    <div class="card-header bg-primary text-white text-center">
+                    <div class="card-header text-center">
                         <h4>Tambah Mobil untuk Dijual</h4>
                     </div>
                     <div class="card-body">
@@ -28,7 +28,6 @@
                                 <input type="text" class="form-control" name="merk" id="merk" required>
                             </div>
 
-                            <!-- Dropdown untuk Tipe Mobil -->
                             <div class="mb-3">
                                 <label for="tipe_id" class="form-label">Tipe Mobil</label>
                                 <select name="tipe_id" id="tipe_id" class="form-control" required>
@@ -48,12 +47,6 @@
                                 <label for="harga" class="form-label">Harga Mobil</label>
                                 <input type="number" class="form-control" name="harga" id="harga" required>
                             </div>
-
-                            <!-- <div class="mb-3">
-                                <label for="foto" class="form-label">Foto Mobil</label>
-                                <input type="file" class="form-control" name="foto" id="foto" accept="image/*">
-                                <small class="form-text text-muted">Pilih foto PNG atau JPG dengan ukuran maksimal 2MB.</small>
-                            </div> -->
                             <div class="mb-3">
                                 <label for="gambar" class="form-label">Foto Mobil</label>
                                 <input type="file" class="form-control" name="gambar" id="gambar" accept="image/*">

@@ -52,7 +52,7 @@ class CarController extends Controller
         'merk' => 'required|string|max:255',
         'tipe_id' => 'required|exists:tipes,id', // Pastikan tipe mobil valid
         'tahun' => 'required|integer',
-        'harga' => 'required|numeric',
+        'harga' => 'required|numeric|max:999999999999',
         'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -88,7 +88,7 @@ class CarController extends Controller
             'merk' => 'required|string|max:255',
             'tipe_id' => 'required|exists:tipes,id', // Validasi tipe mobil yang dipilih
             'tahun' => 'required|integer',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|max:999999999999',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -127,10 +127,23 @@ class CarController extends Controller
         return redirect()->route('jual-mobil.index')->with('success', 'Mobil berhasil dihapus!');
     }
 
-    public function beliIndex()
+    public function beliIndex(Request $request)
     {
         $cars = Car::all();
-        return view('cars.beliIndex', compact('cars'));
+
+        $query = Car::query();
+        
+        if ($request->has('tipe_id') && $request->tipe_id != '') {
+            $query->where('tipe_id', $request->tipe_id);
+        }
+        
+        if ($request->has('search')) {
+            $query->where('merk', 'like', '%' . $request->search . '%');
+        }
+        
+        $cars = $query->get();
+        $tipeMobil = Tipe::all();
+        return view('cars.beliIndex', compact('cars', 'tipeMobil'));
     }
 
     public function beliShow($id)

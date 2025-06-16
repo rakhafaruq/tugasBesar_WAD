@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('merk');
             $table->foreignId('tipe_id')->constrained()->onDelete('cascade');
             $table->integer('tahun');
-            $table->decimal('harga', 10, 2);
+            $table->decimal('harga', 15, 2);
             $table->string('gambar')->nullable();  
             $table->timestamps();
         });
